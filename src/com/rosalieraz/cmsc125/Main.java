@@ -1,7 +1,6 @@
 package com.rosalieraz.cmsc125;
 
 import java.util.Random;
-import java.util.Queue;
 
 public class Main {
     static Random random = new Random();
@@ -11,6 +10,9 @@ public class Main {
 
         user_count = random();
         resource_count = random();
+
+        User user1 = new User(1,resource_count);
+
 
         System.out.println(user_count);
         System.out.println(resource_count);

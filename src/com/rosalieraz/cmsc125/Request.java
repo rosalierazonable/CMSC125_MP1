@@ -1,3 +1,5 @@
+package com.rosalieraz.cmsc125;
+
 public class Request {
 
     int user;
@@ -28,6 +30,6 @@ public class Request {
 
     void display_time() {
         this.duration--;
-        System.out.println("(User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
+        System.out.println("(com.rosalieraz.cmsc125.User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
     }
 }
