@@ -25,4 +25,9 @@ public class Request {
     boolean is_completed() {
         return this.status.equals("complete");
     }
+
+    void display_time() {
+        this.duration--;
+        System.out.println("(User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
+    }
 }
