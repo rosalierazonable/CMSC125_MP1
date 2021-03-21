@@ -14,7 +14,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(new Color(0x12345));
 
-        ImageIcon bg = new ImageIcon("https://replit.com/@rsraz/Multiprogramming#uploads/background.jpg");
-        this.setIconImage(bg.getImage());
+//        ImageIcon bg = new ImageIcon("https://replit.com/@rsraz/Multiprogramming#uploads/background.jpg");
+//        this.setIconImage(bg.getImage());
     }
 }
