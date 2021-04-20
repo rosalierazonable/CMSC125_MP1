@@ -1,0 +1,20 @@
+#Ignore txt file
+*.txt
+
+#Ignore out directory
+out/*
+
+#Ignore log files
+*.log
+
+#Ignore hs_ files
+hs_*
+
+#Ignore cmake-build-debug folder
+cmake-build-debug/*
+
+#Ignore cmake-build-debug-coverage folder
+cmake-build-debug-coverage/*
+
+#ignore CMakeLists
+CMakeLists.txt

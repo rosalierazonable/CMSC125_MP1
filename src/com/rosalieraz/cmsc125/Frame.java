@@ -9,7 +9,7 @@ public class Frame extends JFrame {
     Frame() {
 
         this.setVisible(true);
-        this.setSize(420, 420);
+        this.setSize(500, 500);
         this.setTitle("Multiprogramming with Time-sharing");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(new Color(0x12345));

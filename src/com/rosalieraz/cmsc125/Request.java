@@ -2,11 +2,11 @@ package com.rosalieraz.cmsc125;
 
 public class Request {
 
-    int user;
-    int resource;
-    int duration;
-    String status;
-    String name;
+private final int user;
+private final int resource;
+private int duration;
+private final String status;
+private final String name;
 
     Request(String name, int user, int resource, int duration) {
         this.user = user;
