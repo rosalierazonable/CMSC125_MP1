@@ -34,6 +34,8 @@ public class Main {
             requests.add(reqs);
         }
 
+        displayRequests(requests);
+
 //        for(User u :users) {
 //            Request[] reqs = new Request[u.getRequestCount()];
 //
@@ -73,6 +75,17 @@ public class Main {
         Random random = new Random();
 
         return random.nextInt(bound)+1;
+    }
+
+    public static void displayRequests(Queue<Request[]> reqs) {
+        for (Request[] reqArr: reqs) {
+            for (Request req: reqArr) {
+                req.display_time();
+                if(req.is_completed()) {
+                    req.reportRequest();
+                }
+            }
+        }
     }
 }
 
