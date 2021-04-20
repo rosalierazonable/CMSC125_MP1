@@ -5,7 +5,7 @@ public class Request {
 private final int user;
 private final int resource;
 private int duration;
-private final String status;
+private String status;
 private final String name;
 
     Request(String name, int user, int resource, int duration) {
@@ -31,5 +31,9 @@ private final String name;
     void display_time() {
         this.duration--;
         System.out.println("(User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
+    }
+
+    void setStatus(String status) {
+        this.status = status;
     }
 }
