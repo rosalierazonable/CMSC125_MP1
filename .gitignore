@@ -1,0 +1,9 @@
+#Ignore txt file
+*.txt
+
+#Ignore log files
+*.log
+
+#Ignore out directory
+out/*
+
