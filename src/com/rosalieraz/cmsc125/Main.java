@@ -2,12 +2,13 @@ package com.rosalieraz.cmsc125;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource;
+        Queue<Request[]> requests = new LinkedList<Request[]>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -20,17 +21,28 @@ public class Main {
              * only request a specific resource once
              */
             users[i] = new User(i+1, random(resource_count));
-        }
 
-        for(User u :users) {
-            Request[] reqs = new Request[u.getRequestCount()];
+            Request[] reqs = new Request[users[i].getRequestCount()];
 
-            for(int i = 0; i < u.getRequestCount(); i++) {
+            for(int j = 0; j < users[i].getRequestCount(); j++) {
                 resource = random(resource_count); //randomize which resource to be requested
                 time_length = random(10); // randomize the duration
-                reqs[i] = new Request("User " + u.getId(), u.getId(), resource, time_length); //initialize Request object
+
+                reqs[i] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
             }
+
+            requests.add(reqs);
         }
+
+//        for(User u :users) {
+//            Request[] reqs = new Request[u.getRequestCount()];
+//
+//            for(int i = 0; i < u.getRequestCount(); i++) {
+//                resource = random(resource_count); //randomize which resource to be requested
+//                time_length = random(10); // randomize the duration
+//                reqs[i] = new Request("User " + u.getId(), u.getId(), resource, time_length); //initialize Request object
+//            }
+//        }
 
 
 
@@ -72,4 +84,6 @@ public class Main {
 * https://www.tutorialspoint.com/java-program-to-concatenate-a-string-and-integers
 * https://stackoverflow.com/questions/32597399/is-it-possible-to-create-n-number-of-objects-in-java-using-a-for-loop
 * https://www.javatpoint.com/for-each-loop
+* https://www.javatpoint.com/object-and-class-in-java
+* https://techvidvan.com/tutorials/java-methods/
 */
