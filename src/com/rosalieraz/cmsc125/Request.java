@@ -28,6 +28,11 @@ private final String name;
         return this.status.equals("complete");
     }
 
+    void reportRequest() {
+        if(is_completed())
+            System.out.println("User " + this.user + "/'s request on" + "Resource " + this.resource + "has been completed.");
+    }
+
     void display_time() {
         this.duration--;
         System.out.println("(User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
@@ -36,4 +41,5 @@ private final String name;
     void setStatus(String status) {
         this.status = status;
     }
+
 }
