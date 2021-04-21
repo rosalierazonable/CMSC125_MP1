@@ -29,7 +29,7 @@ public class Main {
                 resource = random(resource_count); //randomize which resource to be requested
                 time_length = random(10); // randomize the duration
 
-                if(takenResource.contains(resource)) {
+                while(takenResource.contains(resource)) {
                     resource = random(resource_count);
                 }
 
@@ -37,6 +37,7 @@ public class Main {
                 takenResource.add(resource);
             }
 
+            takenResource.clear();
             requests.add(reqs);
         }
 

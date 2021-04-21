@@ -35,7 +35,7 @@ private final String name;
 
     void display_time() {
         this.duration--;
-        System.out.println("(User " + this.user + " on resource" + this.resource + ") Time left: " + this.duration);
+        System.out.println("(User " + this.user + " on resource " + this.resource + ") Time left: " + this.duration);
     }
 
     void setStatus(String status) {
