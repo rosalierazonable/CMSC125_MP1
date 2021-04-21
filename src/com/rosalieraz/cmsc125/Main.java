@@ -102,4 +102,5 @@ public class Main {
 * https://www.tutorialspoint.com/queue-in-java
 * https://www.geeksforgeeks.org/queue-interface-java/
 * https://www.tutorialspoint.com/java/java_arraylist_class.htm
+* https://www.programiz.com/java-programming/library/arraylist/addall
 */

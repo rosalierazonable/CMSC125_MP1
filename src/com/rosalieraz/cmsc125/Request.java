@@ -42,4 +42,8 @@ private final String name;
         this.status = status;
     }
 
+    int getTimeRemaining() {
+        return this.duration;
+    }
+
 }

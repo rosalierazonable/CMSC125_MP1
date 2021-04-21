@@ -8,8 +8,6 @@ public class User {
     private int request_count; //randomized number of request to have
     ArrayList<Integer> resourceArr= new ArrayList<Integer>();
 
-//    Request[] reqs = new Request[request_count];
-
     User(int id, int request_count) { //Constructor
         this.id = id;
         this.request_count = request_count;
@@ -31,5 +29,8 @@ public class User {
             System.out.print(" | " + res + " | ");
         }
         System.out.println();
+    }
+    boolean isWaiting(int requestId) {
+        return this.resourceArr.contains(requestId);
     }
 }
