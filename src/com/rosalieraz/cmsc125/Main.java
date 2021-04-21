@@ -34,14 +34,16 @@ public class Main {
                 }
 
                 reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
-                takenResource.add(resource);
+                takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
+            users[i].setResourceArray(takenResource); //sets all the resource a user has
+            takenResource.clear(); // resets the arraylist
+            requests.add(reqs); // add the request to the Queue of request objects
 
-            takenResource.clear();
-            requests.add(reqs);
+            users[i].displayResourceList();
         }
 
-        System.out.println("USer count: " + user_count);
+        System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
         displayRequests(requests);
 
@@ -70,9 +72,8 @@ public class Main {
 
     }
 
-    public static int random(int bound) {
+    public static int random(int bound) { //pseudo-random generator
         Random random = new Random();
-
         return random.nextInt(bound)+1;
     }
 
@@ -100,4 +101,5 @@ public class Main {
 * https://techvidvan.com/tutorials/java-methods/
 * https://www.tutorialspoint.com/queue-in-java
 * https://www.geeksforgeeks.org/queue-interface-java/
+* https://www.tutorialspoint.com/java/java_arraylist_class.htm
 */
