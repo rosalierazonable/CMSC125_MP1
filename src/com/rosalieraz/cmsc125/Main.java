@@ -40,24 +40,17 @@ public class Main {
             takenResource.clear(); // resets the arraylist
             requests.add(reqs); // add the request to the Queue of request objects
 
-            users[i].displayResourceList();
+//            users[i].displayResourceList();
         }
 
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
-        displayRequests(requests);
+//        displayRequests(requests);
 
-
-
-//
-//        int[] resource = new int[resource_count];
-//        for(int i=0; i<user_count; i++) {
-//            User user1 = new User(1,resource_count);
-//            resource[i] = random();
-//        }
-
-//        System.out.println(user_count);
-//        System.out.println(resource_count);
+        for(int i = 0; i < requests.size(); i++) {
+            Program program = new Program(users, requests.poll());
+            program.displayProgramFlow();
+        }
 
 //        Frame frame = new Frame();
 //

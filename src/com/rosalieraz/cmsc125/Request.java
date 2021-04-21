@@ -1,5 +1,7 @@
 package com.rosalieraz.cmsc125;
 
+import java.util.ArrayList;
+
 public class Request {
 
 private final int user;
@@ -16,12 +18,16 @@ private final String name;
         this.name = name;
     }
 
-    static void in_waiting(int userId, int resourceId) {
-        System.out.println(userId + " is waiting for resource " + resourceId);
+    static void in_waiting(ArrayList<Integer> userIds, int resourceId) {
+        System.out.print("Users ");
+        for(int userId: userIds) {
+            System.out.print(userId + " ,");
+        }
+        System.out.println(" are waiting for resource " + resourceId);
     }
 
     void in_action() {
-        System.out.println(this.name + "is now using the resource " + this.resource);
+        System.out.println(this.name + " is now using the resource " + this.resource);
     }
 
     boolean is_completed() {
@@ -30,16 +36,24 @@ private final String name;
 
     void reportRequest() {
         if(is_completed())
-            System.out.println("User " + this.user + "/'s request on" + "Resource " + this.resource + "has been completed.");
+            System.out.println("User " + this.user + "\'s request on " + "resource " + this.resource + " has been completed.");
     }
 
     void display_time() {
         this.duration--;
-        System.out.println("(User " + this.user + " on resource " + this.resource + ") Time left: " + this.duration);
+        System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration);
     }
 
     void setStatus(String status) {
         this.status = status;
+    }
+
+    int getUser() {
+        return this.user;
+    }
+
+    int getResource() {
+        return this.resource;
     }
 
     int getTimeRemaining() {

@@ -22,7 +22,7 @@ public class Program {
 
         return usersWaiting;
     }
-    void Timer(User user, @NotNull Request req) {
+    void timer(@NotNull Request req) {
         while( req.getTimeRemaining()!=0) {
             req.display_time();
         }
@@ -32,7 +32,12 @@ public class Program {
     }
     void displayProgramFlow() {
         for (Request req: this.reqs) {
-
+            req.in_action(); //reports that a specific request on a resource is being done
+            Request.in_waiting(getUsersWaiting(req.getUser()), req.getResource());
+            timer(req); // facilitates allocated time for the specific request
+            req.setStatus("complete");
+            req.reportRequest();
+            users[req.getUser()].updateRequestCount();
         }
     }
 }
