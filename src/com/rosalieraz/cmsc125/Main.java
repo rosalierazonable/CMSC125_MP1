@@ -96,4 +96,7 @@ public class Main {
 * https://www.geeksforgeeks.org/queue-interface-java/
 * https://www.tutorialspoint.com/java/java_arraylist_class.htm
 * https://www.programiz.com/java-programming/library/arraylist/addall
+* https://www.tutorialspoint.com/Java-static-method
+* https://www.guru99.com/java-static-variable-methods.html
+* https://www.geeksforgeeks.org/queue-poll-method-in-java/
 */
