@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource;
         Queue<Request[]> requests = new LinkedList<Request[]>();
+        ArrayList<Integer> takenResource = new ArrayList<Integer>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -28,23 +29,20 @@ public class Main {
                 resource = random(resource_count); //randomize which resource to be requested
                 time_length = random(10); // randomize the duration
 
-                reqs[i] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
+                if(takenResource.contains(resource)) {
+                    resource = random(resource_count);
+                }
+
+                reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
+                takenResource.add(resource);
             }
 
             requests.add(reqs);
         }
 
+        System.out.println("USer count: " + user_count);
+        System.out.println("Resource count: " + resource_count);
         displayRequests(requests);
-
-//        for(User u :users) {
-//            Request[] reqs = new Request[u.getRequestCount()];
-//
-//            for(int i = 0; i < u.getRequestCount(); i++) {
-//                resource = random(resource_count); //randomize which resource to be requested
-//                time_length = random(10); // randomize the duration
-//                reqs[i] = new Request("User " + u.getId(), u.getId(), resource, time_length); //initialize Request object
-//            }
-//        }
 
 
 
@@ -99,4 +97,6 @@ public class Main {
 * https://www.javatpoint.com/for-each-loop
 * https://www.javatpoint.com/object-and-class-in-java
 * https://techvidvan.com/tutorials/java-methods/
+* https://www.tutorialspoint.com/queue-in-java
+* https://www.geeksforgeeks.org/queue-interface-java/
 */
