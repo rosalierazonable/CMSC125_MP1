@@ -16,12 +16,12 @@ private final String name;
         this.name = name;
     }
 
-    void in_waiting() {
-        System.out.println(this.user + " is waiting for resource " + this.resource);
+    static void in_waiting(int userId, int resourceId) {
+        System.out.println(userId + " is waiting for resource " + resourceId);
     }
 
     void in_action() {
-        System.out.println(this.user + "is now using the resource " + this.resource);
+        System.out.println(this.name + "is now using the resource " + this.resource);
     }
 
     boolean is_completed() {
