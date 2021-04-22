@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource;
-        Queue<Request[]> requests = new LinkedList<Request[]>();
-        ArrayList<Integer> takenResource = new ArrayList<Integer>();
+//        Queue<Request[]> requests = new LinkedList<Request[]>();
+        ArrayList<Integer> takenResource = new ArrayList<>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -36,9 +36,10 @@ public class Main {
                 reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
-            users[i].setResourceArray(takenResource); //sets all the resource a user has
+//            users[i].setResourceArray(takenResource); //sets all the resource a user has
+            users[i].setUserRequests(reqs);
             takenResource.clear(); // resets the arraylist
-            requests.add(reqs); // add the request to the Queue of request objects
+//            requests.add(reqs); // add the request to the Queue of request objects
 
 //            users[i].displayResourceList();
         }
@@ -47,10 +48,10 @@ public class Main {
         System.out.println("Resource count: " + resource_count);
 //        displayRequests(requests);
 
-        for(int i = 0; i < requests.size(); i++) {
-            Program program = new Program(users, requests.poll());
-            program.displayProgramFlow();
-        }
+//        for(int i = 0; i < requests.size(); i++) {
+//            Program program = new Program(users, requests.poll());
+//            program.displayProgramFlow();
+//        }
 
 //        Frame frame = new Frame();
 //
