@@ -36,7 +36,7 @@ private final String name;
 
     void reportRequest() {
         if(is_completed())
-            System.out.println("User " + this.user + "\'s request on " + "resource " + this.resource + " has been completed.");
+            System.out.println("User " + this.user + "'s request on " + "resource " + this.resource + " has been completed.");
     }
 
     void display_time() {
