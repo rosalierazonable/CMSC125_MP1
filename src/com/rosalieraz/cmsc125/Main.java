@@ -40,7 +40,7 @@ public class Main {
             users[i].setUserRequests(reqs);
             takenResource.clear(); // resets the arraylist
 //            requests.add(reqs); // add the request to the Queue of request objects
-
+            users[i].displayUserDetail();
 //            users[i].displayResourceList();
         }
 

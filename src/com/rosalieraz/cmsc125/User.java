@@ -37,4 +37,7 @@ public class User {
     void setUserRequests(Request[] requests) {
         this.userRequests = requests;
     }
+    void displayUserDetail() {
+        System.out.println("User " + this.id + " has " + this.userRequests.length + " unique resource request/s.");
+    }
 }
