@@ -5,11 +5,9 @@ import java.util.*;
 
 public class Program {
     User[] users;
-    Request[] reqs;
 
-    Program(User[] user, Request[] req){
+    Program(User[] user){
         this.users = user;
-        this.reqs = req;
     }
 
 //    ArrayList<Integer> getUsersWaiting(int requestId) {
@@ -22,6 +20,8 @@ public class Program {
 //
 //        return usersWaiting;
 //    }
+
+    //Helper Functions
     void timer(@NotNull Request req) {
         while( req.getTimeRemaining()!=0) {
             req.display_time();
