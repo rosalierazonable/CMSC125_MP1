@@ -7,8 +7,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        int user_count, resource_count, time_length, resource;
-//        Queue<Request[]> requests = new LinkedList<Request[]>();
+        int user_count, resource_count, time_length, resource, req_count;
         ArrayList<Integer> takenResource = new ArrayList<>();
 
         user_count = random(5); //generate random number of users that will need a resource
@@ -17,15 +16,12 @@ public class Main {
         resource_count = random(5); //generate random number of resource that will be available for the users
 
         for(int i = 0; i < user_count; i++) {
-            /* initialize user object with id and randomly generated request_count out of the resource_count (# of requests available)
-             * the limit bound set in the random function is set to be the number of resource available in the program since they can
-             * only request a specific resource once
-             */
-            users[i] = new User(i+1, random(resource_count));
+            users[i] = new User(i+1);
+            req_count = random(resource_count);
 
-            Request[] reqs = new Request[users[i].getRequestCount()];
+            Request[] reqs = new Request[req_count];
 
-            for(int j = 0; j < users[i].getRequestCount(); j++) {
+            for(int j = 0; j < req_count; j++) {
                 resource = random(resource_count); //randomize which resource to be requested
                 time_length = random(10); // randomize the duration
 
@@ -36,10 +32,9 @@ public class Main {
                 reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
-//            users[i].setResourceArray(takenResource); //sets all the resource a user has
-            users[i].setUserRequests(reqs);
+
+            users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
             takenResource.clear(); // resets the arraylist
-//            requests.add(reqs); // add the request to the Queue of request objects
             users[i].displayUserDetail();
 //            users[i].displayResourceList();
         }
