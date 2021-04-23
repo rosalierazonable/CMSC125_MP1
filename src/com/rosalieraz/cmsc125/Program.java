@@ -1,6 +1,8 @@
 package com.rosalieraz.cmsc125;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Program {
@@ -9,17 +11,6 @@ public class Program {
     Program(User[] user){
         this.users = user;
     }
-
-//    ArrayList<Integer> getUsersWaiting(int requestId) {
-//        ArrayList<Integer> usersWaiting = new ArrayList<Integer>();
-//
-//        for(User user: this.users) {
-//            if(user.isWaiting(requestId))
-//                usersWaiting.add(user.getId());
-//        }
-//
-//        return usersWaiting;
-//    }
 
     //Helper Functions
     void timer(@NotNull Request req) {
@@ -30,14 +21,33 @@ public class Program {
     boolean isRequestFree(Request req) {
         return req.is_completed();
     }
-//    void displayProgramFlow() {
-//        for (Request req: this.reqs) {
-//            req.in_action(); //reports that a specific request on a resource is being done
-//            Request.in_waiting(getUsersWaiting(req.getUser()), req.getResource());
-//            timer(req); // facilitates allocated time for the specific request
-//            req.setStatus("complete");
-//            req.reportRequest();
-//            users[req.getUser()].updateRequestCount();
-//        }
-//    }
+    static ArrayList<Boolean> areRequestsUnique(ArrayList<Queue<Integer>> resList) {
+        ArrayList<Integer> activeRes = new ArrayList<>(); //temporarily holds the unique resource_id
+        ArrayList<Boolean> requestStat = new ArrayList<>(); //keeps track of the request status: unique or not
+
+        for (Queue<Integer> rList: resList) {
+
+            if(!activeRes.isEmpty()) {
+                if(!activeRes.contains(rList.peek())) {
+                    requestStat.add(true); // sets status to true which means that the resource at this index is indeed unique
+                    activeRes.add(rList.poll()); //keeps track of unique resource idx
+                } else {
+                    requestStat.add(false); // sets status to false which means that the some user is still waiting for this resource
+                    activeRes.add(0); // just to identify that this resource must not be modified, resource not been dealt with yet
+                }
+            } else {
+                requestStat.add(true); // sets status to true which means that the resource at this index is indeed unique
+                activeRes.add(rList.peek()); //keeps track of unique resource idx
+            }
+        }
+        return requestStat;
+    }
+
+    static void displayStatus(ArrayList<Boolean> stats) {
+        System.out.print("Request Status: ");
+        for (Boolean stat: stats) {
+            System.out.print(stat + " ");
+        }
+        System.out.println();
+    }
 }

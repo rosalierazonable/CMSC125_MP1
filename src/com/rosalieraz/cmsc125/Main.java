@@ -8,7 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
-        ArrayList<Integer> takenResource = new ArrayList<>();
+        Queue<Integer> takenResource = new LinkedList<>();
+        ArrayList<Queue<Integer>> resourceList = new ArrayList<>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -33,20 +34,18 @@ public class Main {
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
 
-            users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
+            resourceList.add(takenResource); //add to the list of generated resources
             takenResource.clear(); // resets the arraylist
+
+            users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
             users[i].displayUserDetail();
-//            users[i].displayResourceList();
+            users[i].displayRequestedResources();
         }
 
+        Program.displayStatus(Program.areRequestsUnique(resourceList));
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
-//        displayRequests(requests);
 
-//        for(int i = 0; i < requests.size(); i++) {
-//            Program program = new Program(users, requests.poll());
-//            program.displayProgramFlow();
-//        }
 
 //        Frame frame = new Frame();
 //
