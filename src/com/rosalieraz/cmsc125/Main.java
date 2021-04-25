@@ -42,7 +42,7 @@ public class Main {
         }
         Program program = new Program(users);
         program.displayStatus();
-
+        program.displayInAction();
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
 
@@ -65,16 +65,16 @@ public class Main {
         return random.nextInt(bound)+1;
     }
 
-    public static void displayRequests(Queue<Request[]> reqs) {
-        for (Request[] reqArr: reqs) {
-            for (Request req: reqArr) {
-                req.display_time();
-                if(req.is_completed()) {
-                    req.reportRequest();
-                }
-            }
-        }
-    }
+//    public static void displayRequests(Queue<Request[]> reqs) {
+//        for (Request[] reqArr: reqs) {
+//            for (Request req: reqArr) {
+//                req.display_time();
+//                if(req.is_completed()) {
+//                    req.reportRequest();
+//                }
+//            }
+//        }
+//    }
 }
 
 
