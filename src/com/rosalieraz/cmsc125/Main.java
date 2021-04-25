@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
-        ArrayList<Queue<Integer>> resourceList = new ArrayList<>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -20,7 +19,7 @@ public class Main {
             users[i] = new User(i+1);
             req_count = random(resource_count);
 
-            Request[] reqs = new Request[req_count];
+            ArrayList<Request> reqs = new ArrayList<>();
 
             for(int j = 0; j < req_count; j++) {
                 resource = random(resource_count); //randomize which resource to be requested
@@ -30,19 +29,20 @@ public class Main {
                     resource = random(resource_count);
                 }
 
-                reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
+
+                reqs.add(new Request("User " + users[i].getId(), users[i].getId(), resource, time_length)); //initialize Request object
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
 
-            resourceList.add(takenResource); //add to the list of generated resources
             takenResource.clear(); // resets the arraylist
 
             users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
             users[i].displayUserDetail();
             users[i].displayRequestedResources();
         }
+        Program program = new Program(users);
+        program.displayStatus();
 
-        Program.displayStatus(Program.areRequestsUnique(resourceList));
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
 

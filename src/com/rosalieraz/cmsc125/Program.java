@@ -9,7 +9,7 @@ public class Program {
     User[] users;
 
     Program(User[] user){
-        this.users = user;
+        users = user;
     }
 
     //Helper Functions
@@ -40,12 +40,41 @@ public class Program {
                 activeRes.add(rList.peek()); //keeps track of unique resource idx
             }
         }
-        return requestStat;
+         return requestStat;
     }
 
-    static void displayStatus(ArrayList<Boolean> stats) {
+     ArrayList<Integer> getCurrentRequest(){
+        ArrayList<Integer> currReqs = new ArrayList<Integer>();
+        for (User user: users) {
+            if(currReqs.isEmpty()) {
+                currReqs.add(user.getCurrReq());
+            } else if(!currReqs.contains(user.getCurrReq())) {
+                currReqs.add(user.getCurrReq());
+            } else {
+                currReqs.add(0);
+            }
+        }
+        return currReqs;
+    }
+
+    ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
+        ArrayList<String> status = new ArrayList<>();
+        for (Integer req: currReqs) {
+            if(req!=0) {
+                status.add("in_action");
+            } else {
+                status.add("waiting");
+            }
+        }
+        return status;
+    }
+
+
+     void displayStatus() {
         System.out.print("Request Status: ");
-        for (Boolean stat: stats) {
+        ArrayList<String> stats = getStatus(getCurrentRequest());
+
+        for (String stat: stats) {
             System.out.print(stat + " ");
         }
         System.out.println();
