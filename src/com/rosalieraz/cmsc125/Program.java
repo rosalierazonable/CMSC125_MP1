@@ -110,8 +110,7 @@ ArrayList<Integer> getCurrentRequest(){
         for(int i = 0; i < status.size(); i++) {
             if(status.get(i).equals("in_action")) {
                 users[i].userRequests.get(0).in_action();
-//                users[i].userRequests.remove(0);
-//                users[i].removeDisplayedReq();
+                users[i].removeDisplayedReq();
             } else {
                 users[i].userRequests.get(0).is_waiting();
             }

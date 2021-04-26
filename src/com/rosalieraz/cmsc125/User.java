@@ -44,7 +44,7 @@ public class User {
         return this.userRequests.get(0).getResource();
     }
 
-//    void removeDisplayedReq() {
-//        this.userRequests[0].setStatus("in_action");
-//    }
+    void removeDisplayedReq() {
+        this.userRequests.remove(0);
+    }
 }
