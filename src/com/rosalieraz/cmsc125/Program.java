@@ -1,8 +1,5 @@
 package com.rosalieraz.cmsc125;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Program {
@@ -19,9 +16,11 @@ public class Program {
     }
 
     //Helper Functions
-    void timer(@NotNull Request req) {
-        while( req.getTimeRemaining()!=0) {
-            req.display_time();
+    void timer(Request req) {
+        if(req != null) {
+            while( req.getTimeRemaining()!=0) {
+                req.display_time();
+            }
         }
     }
     boolean isRequestFree(Request req) {
@@ -31,28 +30,7 @@ public class Program {
         }
         return false;
     }
-//    static ArrayList<Boolean> areRequestsUnique(ArrayList<Queue<Integer>> resList) {
-//        ArrayList<Integer> activeRes = new ArrayList<>(); //temporarily holds the unique resource_id
-//        ArrayList<Boolean> requestStat = new ArrayList<>(); //keeps track of the request status: unique or not
-//
-//        for (Queue<Integer> rList: resList) {
-//
-//            if(!activeRes.isEmpty()) {
-//                if(!activeRes.contains(rList.peek())) {
-//                    requestStat.add(true); // sets status to true which means that the resource at this index is indeed unique
-//                    activeRes.add(rList.poll()); //keeps track of unique resource idx
-//                } else {
-//                    requestStat.add(false); // sets status to false which means that the some user is still waiting for this resource
-//                    activeRes.add(0); // just to identify that this resource must not be modified, resource not been dealt with yet
-//                }
-//            } else {
-//                requestStat.add(true); // sets status to true which means that the resource at this index is indeed unique
-//                activeRes.add(rList.peek()); //keeps track of unique resource idx
-//            }
-//        }
-//         return requestStat;
-//    }
-ArrayList<Integer> getCurrentRequest(){
+    ArrayList<Integer> getCurrentRequest(){
         ArrayList<Integer> currReqs = new ArrayList<>();
         for (User user: users) {
             if(currReqs.isEmpty()) {
