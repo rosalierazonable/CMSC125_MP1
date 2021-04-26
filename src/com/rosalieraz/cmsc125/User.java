@@ -15,6 +15,11 @@ public class User {
     //Getter Functions
     int getId(){return this.id;}
     int getRequestCount() {return this.userRequests.size();}
+    Request getCurrRequest() {
+        if(!this.userRequests.isEmpty())
+            return this.userRequests.get(0);
+        return null; //No more Request
+    }
 
     //Setter Functions
     void setUserRequests(ArrayList<Request> requests) {
@@ -32,8 +37,11 @@ public class User {
         }
         System.out.println();
     }
-    int getCurrReq() {
+    int getCurrResource() {
         return this.userRequests.get(0).getResource();
+    }
+    boolean isRequestEmpty() {
+        return this.userRequests.isEmpty();
     }
     void removeDisplayedReq() {
         this.userRequests.remove(0);

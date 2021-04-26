@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Program {
     User[] users;
-    ArrayList<User> waitListed = new ArrayList<>();
+//    ArrayList<User> waitListed = new ArrayList<>();
+    ArrayList<Request> waitListed = new ArrayList<>();
     LinkedHashMap<Integer, Request> requestSequence = new LinkedHashMap<>();
 
     //Constructor
@@ -13,8 +14,34 @@ public class Program {
     }
 
     // Getter Functions
-    ArrayList<User> getWaitListed() {
+//    ArrayList<User> getWaitListed() {
+//        return this.waitListed;
+//    }
+    ArrayList<Request> getWaitListed() {
         return this.waitListed;
+    }
+
+    // Setter Functions
+    ArrayList<Integer> setRequestSequence(){
+        ArrayList<Integer> currReqs = new ArrayList<>();
+        int idx = 0;
+        for (User user: users) {
+            if (currReqs.isEmpty()) {
+                currReqs.add(user.getCurrResource());
+                requestSequence.put(idx, user.getCurrRequest());
+                user.removeDisplayedReq();
+            } else if (!currReqs.contains(user.getCurrResource())) {
+                currReqs.add(user.getCurrResource());
+                requestSequence.put(idx, user.getCurrRequest());
+                user.removeDisplayedReq();
+            } else {
+                currReqs.add(0);
+//                idx = currReqs.indexOf(user.getCurrReq());
+//                currReqs.get(idx);
+                this.waitListed.add(user.getCurrRequest());
+            }
+        }
+        return currReqs;
     }
 
     //Helper Functions
@@ -36,34 +63,27 @@ public class Program {
         ArrayList<Integer> currReqs = new ArrayList<>();
         for (User user: users) {
             if(currReqs.isEmpty()) {
-                currReqs.add(user.getCurrReq());
+                currReqs.add(user.getCurrResource());
 
-            } else if(!currReqs.contains(user.getCurrReq())) {
-                currReqs.add(user.getCurrReq());
+            } else if(!currReqs.contains(user.getCurrResource())) {
+                currReqs.add(user.getCurrResource());
             } else {
                 currReqs.add(0);
-//                idx = currReqs.indexOf(user.getCurrReq());
-//                currReqs.get(idx);
-                this.waitListed.add(user);
+//                this.waitListed.add(user);
             }
         }
         return currReqs;
     }
-//    void setRequestSequence(){
-//        ArrayList<Integer> currReqs = new ArrayList<>();
-//        for (User user: users) {
-//            if(currReqs.isEmpty()) {
-//                currReqs.add(user.getCurrReq());
-//            } else if(!currReqs.contains(user.getCurrReq())) {
-//                currReqs.add(user.getCurrReq());
+//    ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
+//        ArrayList<String> status = new ArrayList<>();
+//        for (Integer req: currReqs) {
+//            if(req!=0) {
+//                status.add("in_action");
 //            } else {
-//                currReqs.add(0);
-////                idx = currReqs.indexOf(user.getCurrReq());
-////                currReqs.get(idx);
-//                this.waitListed.add(user);
+//                status.add("waiting");
 //            }
 //        }
-//        return currReqs;
+//        return status;
 //    }
     ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
         ArrayList<String> status = new ArrayList<>();
@@ -76,21 +96,41 @@ public class Program {
         }
         return status;
     }
+//    void displayStatus() {
+//        System.out.print("Request Status: ");
+//        ArrayList<String> stats = getStatus(getCurrentRequest());
+//
+//        for (String stat: stats) {
+//            System.out.print(stat + " ");
+//        }
+//        System.out.println();
+//    }
     void displayStatus() {
         System.out.print("Request Status: ");
-        ArrayList<String> stats = getStatus(getCurrentRequest());
+        ArrayList<String> stats = getStatus(setRequestSequence());
 
         for (String stat: stats) {
             System.out.print(stat + " ");
         }
         System.out.println();
     }
+//    void displayInAction() {
+//        ArrayList<String> status = getStatus(getCurrentRequest());
+//        for(int i = 0; i < status.size(); i++) {
+//            if(status.get(i).equals("in_action")) {
+//                users[i].userRequests.get(0).in_action();
+//                users[i].removeDisplayedReq();
+//            } else {
+//                users[i].userRequests.get(0).is_waiting();
+//            }
+//        }
+//    }
     void displayInAction() {
-        ArrayList<String> status = getStatus(getCurrentRequest());
+        ArrayList<String> status = getStatus(setRequestSequence());
         for(int i = 0; i < status.size(); i++) {
             if(status.get(i).equals("in_action")) {
                 users[i].userRequests.get(0).in_action();
-                users[i].removeDisplayedReq();
+//                users[i].removeDisplayedReq();
             } else {
                 users[i].userRequests.get(0).is_waiting();
             }
@@ -109,5 +149,8 @@ public class Program {
                     users[i].userRequests.get(0).displayCompleteReq();
             }
         }
+    }
+    void displayProgramFlow() {
+
     }
 }
