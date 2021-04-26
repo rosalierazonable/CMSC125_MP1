@@ -1,7 +1,7 @@
 package com.rosalieraz.cmsc125;
 
 import java.util.ArrayList;
-import java.util.Queue;
+//import java.util.Queue;
 
 public class User {
 

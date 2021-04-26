@@ -1,7 +1,7 @@
 package com.rosalieraz.cmsc125;
 
-import javax.swing.*;
-import java.awt.*;
+//import javax.swing.*;
+//import java.awt.*;
 import java.util.*;
 
 public class Main {
@@ -29,7 +29,6 @@ public class Main {
                     resource = random(resource_count);
                 }
 
-
                 reqs.add(new Request("User " + users[i].getId(), users[i].getId(), resource, time_length)); //initialize Request object
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
@@ -37,12 +36,20 @@ public class Main {
             takenResource.clear(); // resets the arraylist
 
             users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
-            users[i].displayUserDetail();
-            users[i].displayRequestedResources();
+            users[i].displayUserDetail(); // display how many resource requests were made by the user
+            users[i].displayRequestedResources(); //display list of requested resource
         }
         Program program = new Program(users);
         program.displayStatus();
         program.displayInAction();
+
+        System.out.println("Updated user details: ");
+        for(User user: users) {
+            user.displayRequestedResources(); //display list of requested resource
+        }
+
+//        program.displayProgram();
+//
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
 
@@ -94,4 +101,6 @@ public class Main {
 * https://www.tutorialspoint.com/Java-static-method
 * https://www.guru99.com/java-static-variable-methods.html
 * https://www.geeksforgeeks.org/queue-poll-method-in-java/
+* https://stackoverflow.com/questions/14062118/pass-array-by-reference-in-java#:~:text=In%20Java%2C%20an%20array%20is%20passed%20by%20value%2C,an%20array.%20Suppose%20you%20have%20an%20array%20arr.
+* https://stackoverflow.com/questions/13504141/passing-arraylist-as-a-parameter
 */

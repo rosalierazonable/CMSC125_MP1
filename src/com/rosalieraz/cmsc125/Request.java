@@ -14,7 +14,7 @@ private final String name;
         this.user = user;
         this.resource = resource;
         this.duration = duration;
-        this.status = "waiting";
+        this.status = "default";
         this.name = name;
     }
 
@@ -22,7 +22,6 @@ private final String name;
     void is_waiting() {
         System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available");
     }
-
     void in_action() {
         System.out.println(this.name + " will be using the resource " + this.resource + " for " + this.duration + " seconds");
     }

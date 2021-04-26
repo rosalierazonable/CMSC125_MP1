@@ -8,16 +8,15 @@ import java.util.*;
 public class Program {
     User[] users;
     ArrayList<User> waitListed = new ArrayList<>();
-
+    LinkedHashMap<Integer, Request> requestSequence = new LinkedHashMap<>();
     Program(User[] user){
         users = user;
     }
 
-    // get waitListed Users
+    // Getter Functions
     ArrayList<User> getWaitListed() {
         return this.waitListed;
     }
-
 
     //Helper Functions
     void timer(@NotNull Request req) {
@@ -53,20 +52,39 @@ public class Program {
 //        }
 //         return requestStat;
 //    }
-    ArrayList<Integer> getCurrentRequest(){
-        ArrayList<Integer> currReqs = new ArrayList<Integer>();
+ArrayList<Integer> getCurrentRequest(){
+        ArrayList<Integer> currReqs = new ArrayList<>();
         for (User user: users) {
             if(currReqs.isEmpty()) {
                 currReqs.add(user.getCurrReq());
+
             } else if(!currReqs.contains(user.getCurrReq())) {
                 currReqs.add(user.getCurrReq());
             } else {
                 currReqs.add(0);
+//                idx = currReqs.indexOf(user.getCurrReq());
+//                currReqs.get(idx);
                 this.waitListed.add(user);
             }
         }
         return currReqs;
     }
+//    void setRequestSequence(){
+//        ArrayList<Integer> currReqs = new ArrayList<>();
+//        for (User user: users) {
+//            if(currReqs.isEmpty()) {
+//                currReqs.add(user.getCurrReq());
+//            } else if(!currReqs.contains(user.getCurrReq())) {
+//                currReqs.add(user.getCurrReq());
+//            } else {
+//                currReqs.add(0);
+////                idx = currReqs.indexOf(user.getCurrReq());
+////                currReqs.get(idx);
+//                this.waitListed.add(user);
+//            }
+//        }
+//        return currReqs;
+//    }
     ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
         ArrayList<String> status = new ArrayList<>();
         for (Integer req: currReqs) {
@@ -92,6 +110,8 @@ public class Program {
         for(int i = 0; i < status.size(); i++) {
             if(status.get(i).equals("in_action")) {
                 users[i].userRequests.get(0).in_action();
+//                users[i].userRequests.remove(0);
+//                users[i].removeDisplayedReq();
             } else {
                 users[i].userRequests.get(0).is_waiting();
             }
