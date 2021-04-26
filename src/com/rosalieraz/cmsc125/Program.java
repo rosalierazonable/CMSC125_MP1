@@ -6,8 +6,10 @@ public class Program {
     User[] users;
     ArrayList<User> waitListed = new ArrayList<>();
     LinkedHashMap<Integer, Request> requestSequence = new LinkedHashMap<>();
+
+    //Constructor
     Program(User[] user){
-        users = user;
+        this.users = user;
     }
 
     // Getter Functions

@@ -25,7 +25,6 @@ public class User {
     void displayUserDetail() {
         System.out.println("User " + this.id + " has " + this.userRequests.size() + " resource request/s.");
     }
-
     void displayRequestedResources() {
         System.out.print("Requested resource/s: ");
         for(Request req: userRequests) {
@@ -33,11 +32,9 @@ public class User {
         }
         System.out.println();
     }
-
     int getCurrReq() {
         return this.userRequests.get(0).getResource();
     }
-
     void removeDisplayedReq() {
         this.userRequests.remove(0);
     }

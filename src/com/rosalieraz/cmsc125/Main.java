@@ -40,8 +40,8 @@ public class Main {
             users[i].displayRequestedResources(); //display list of requested resource
         }
         Program program = new Program(users);
-        program.displayStatus();
-        program.displayInAction();
+        program.displayStatus(); //displays whether a in_action or waiting for a resource
+        program.displayInAction(); //display all requests that are in action also those that are in waiting
 
         System.out.println("Updated user details: ");
         for(User user: users) {
@@ -64,7 +64,6 @@ public class Main {
 //        label.setVerticalAlignment(JLabel.CENTER);
 //        label.setHorizontalAlignment(JLabel.CENTER);
 //        frame.add(label);
-
     }
 
     public static int random(int bound) { //pseudo-random generator
