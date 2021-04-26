@@ -1,15 +1,14 @@
 package com.rosalieraz.cmsc125;
 
-import javax.swing.*;
-import java.awt.*;
+//import javax.swing.*;
+//import java.awt.*;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        int user_count, resource_count, time_length, resource;
-        Queue<Request[]> requests = new LinkedList<Request[]>();
-        ArrayList<Integer> takenResource = new ArrayList<Integer>();
+        int user_count, resource_count, time_length, resource, req_count;
+        Queue<Integer> takenResource = new LinkedList<>();
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -17,15 +16,12 @@ public class Main {
         resource_count = random(5); //generate random number of resource that will be available for the users
 
         for(int i = 0; i < user_count; i++) {
-            /* initialize user object with id and randomly generated request_count out of the resource_count (# of requests available)
-             * the limit bound set in the random function is set to be the number of resource available in the program since they can
-             * only request a specific resource once
-             */
-            users[i] = new User(i+1, random(resource_count));
+            users[i] = new User(i+1);
+            req_count = random(resource_count);
 
-            Request[] reqs = new Request[users[i].getRequestCount()];
+            ArrayList<Request> reqs = new ArrayList<>();
 
-            for(int j = 0; j < users[i].getRequestCount(); j++) {
+            for(int j = 0; j < req_count; j++) {
                 resource = random(resource_count); //randomize which resource to be requested
                 time_length = random(10); // randomize the duration
 
@@ -33,24 +29,30 @@ public class Main {
                     resource = random(resource_count);
                 }
 
-                reqs[j] = new Request("User " + users[i].getId(), users[i].getId(), resource, time_length); //initialize Request object
+                reqs.add(new Request("User " + users[i].getId(), users[i].getId(), resource, time_length)); //initialize Request object
                 takenResource.add(resource); //add resource number to the list of already taken resource to avoid duplicates
             }
-            users[i].setResourceArray(takenResource); //sets all the resource a user has
-            takenResource.clear(); // resets the arraylist
-            requests.add(reqs); // add the request to the Queue of request objects
 
-//            users[i].displayResourceList();
+            takenResource.clear(); // resets the arraylist
+
+            users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
+            users[i].displayUserDetail(); // display how many resource requests were made by the user
+            users[i].displayRequestedResources(); //display list of requested resource
+        }
+        Program program = new Program(users);
+        program.displayStatus();
+        program.displayInAction();
+
+        System.out.println("Updated user details: ");
+        for(User user: users) {
+            user.displayRequestedResources(); //display list of requested resource
         }
 
+//        program.displayProgram();
+//
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
-//        displayRequests(requests);
 
-        for(int i = 0; i < requests.size(); i++) {
-            Program program = new Program(users, requests.poll());
-            program.displayProgramFlow();
-        }
 
 //        Frame frame = new Frame();
 //
@@ -70,16 +72,16 @@ public class Main {
         return random.nextInt(bound)+1;
     }
 
-    public static void displayRequests(Queue<Request[]> reqs) {
-        for (Request[] reqArr: reqs) {
-            for (Request req: reqArr) {
-                req.display_time();
-                if(req.is_completed()) {
-                    req.reportRequest();
-                }
-            }
-        }
-    }
+//    public static void displayRequests(Queue<Request[]> reqs) {
+//        for (Request[] reqArr: reqs) {
+//            for (Request req: reqArr) {
+//                req.display_time();
+//                if(req.is_completed()) {
+//                    req.reportRequest();
+//                }
+//            }
+//        }
+//    }
 }
 
 
@@ -99,4 +101,6 @@ public class Main {
 * https://www.tutorialspoint.com/Java-static-method
 * https://www.guru99.com/java-static-variable-methods.html
 * https://www.geeksforgeeks.org/queue-poll-method-in-java/
+* https://stackoverflow.com/questions/14062118/pass-array-by-reference-in-java#:~:text=In%20Java%2C%20an%20array%20is%20passed%20by%20value%2C,an%20array.%20Suppose%20you%20have%20an%20array%20arr.
+* https://stackoverflow.com/questions/13504141/passing-arraylist-as-a-parameter
 */

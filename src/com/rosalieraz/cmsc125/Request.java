@@ -14,48 +14,41 @@ private final String name;
         this.user = user;
         this.resource = resource;
         this.duration = duration;
-        this.status = "waiting";
+        this.status = "default";
         this.name = name;
     }
 
-    static void in_waiting(ArrayList<Integer> userIds, int resourceId) {
-        System.out.print("Users ");
-        for(int userId: userIds) {
-            System.out.print(userId + " ,");
-        }
-        System.out.println(" are waiting for resource " + resourceId);
+    //Helper Functions
+    void is_waiting() {
+        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available");
     }
-
     void in_action() {
-        System.out.println(this.name + " is now using the resource " + this.resource);
+        System.out.println(this.name + " will be using the resource " + this.resource + " for " + this.duration + " seconds");
     }
-
     boolean is_completed() {
         return this.status.equals("complete");
     }
-
-    void reportRequest() {
+    void displayCompleteReq() {
         if(is_completed())
             System.out.println("User " + this.user + "'s request on " + "resource " + this.resource + " has been completed.");
     }
-
     void display_time() {
+        System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration + " seconds");
         this.duration--;
-        System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration);
     }
 
+    //Setter Functions
     void setStatus(String status) {
         this.status = status;
     }
 
+    //Getter Functions
     int getUser() {
         return this.user;
     }
-
     int getResource() {
         return this.resource;
     }
-
     int getTimeRemaining() {
         return this.duration;
     }
