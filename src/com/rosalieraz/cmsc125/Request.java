@@ -1,6 +1,6 @@
 package com.rosalieraz.cmsc125;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Request {
 
