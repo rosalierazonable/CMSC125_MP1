@@ -52,20 +52,19 @@ public class Main {
             users[i].displayRequestedResources(); //display list of requested resource
         }
         Program program = new Program(users);
-        System.out.println("Max-size:" + program.getMaxSize());
+//        System.out.println("Max-size:" + program.getMaxSize());
 //        program.displayStatus(); //displays whether a in_action or waiting for a resource
 //        program.displayInAction(); //display all requests that are in action also those that are in waiting
 
-        System.out.println("Updated user details: ");
-        for(User user: users) {
-            user.displayRequestedResources(); //display list of requested resource
-        }
+//        System.out.println("Updated user details: ");
+//        for(User user: users) {
+//            user.displayRequestedResources(); //display list of requested resource
+//        }
 
         program.displayProgramFlow();
 
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
-
 
 //        Frame frame = new Frame();
 //

@@ -23,21 +23,20 @@ public class Program {
     }
 
     // Setter Functions
-    ArrayList<Integer> setRequestSequence(){
+    void setRequestSequence(){
         ArrayList<Integer> currReqs = new ArrayList<>();
         int idx = 0;
        while(idx < getMaxSize()) {
            for (User user: users) {
                if(idx < user.userRequests.size()) {
-                   if (currReqs.isEmpty() || !currReqs.contains(user.userRequests.get(idx).getResource())) {
+                   if(currReqs.isEmpty() || !currReqs.contains(user.userRequests.get(idx).getResource())) {
                        currReqs.add(user.userRequests.get(idx).getResource());
                        user.userRequests.get(idx).setStatus("in action");
-                       this.requestSequence.add(user.userRequests.get(idx));
                    } else {
                        user.userRequests.get(idx).setStatus("in waiting");
-                       this.requestSequence.add(user.userRequests.get(idx));
-//                    this.waitListed.add(user.userRequests.get(idx));
+                       //                    this.waitListed.add(user.userRequests.get(idx));
                    }
+                   this.requestSequence.add(user.userRequests.get(idx));
                }
 //            if (currReqs.isEmpty()) {
 //                currReqs.add(user.getCurrResource());
@@ -57,7 +56,6 @@ public class Program {
            }
            idx++;
        }
-        return currReqs;
     }
 
     //Helper Functions
@@ -178,6 +176,7 @@ public class Program {
 //    }
     void displayProgramFlow() {
         System.out.println("WaitList size: " + this.waitListed.size());
+        setRequestSequence();
         System.out.println("Array size: " + requestSequence.size());
         for(Request req: requestSequence) {
             if(req!=null) {
