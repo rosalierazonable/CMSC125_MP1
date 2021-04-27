@@ -9,6 +9,18 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
+        ArrayList<Integer> sampleArr = new ArrayList<>();
+
+//        sampleArr.add(0);
+//        sampleArr.add(1);
+//        sampleArr.add(2);
+//        sampleArr.add(3);
+//        sampleArr.add(4);
+//
+//        sampleArr.remove(0);
+//        System.out.println(sampleArr.get(0));
+//        sampleArr.remove(0);
+//        System.out.println(sampleArr.get(0));
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -40,16 +52,17 @@ public class Main {
             users[i].displayRequestedResources(); //display list of requested resource
         }
         Program program = new Program(users);
+        System.out.println("Max-size:" + program.getMaxSize());
         program.displayStatus(); //displays whether a in_action or waiting for a resource
-        program.displayInAction(); //display all requests that are in action also those that are in waiting
+//        program.displayInAction(); //display all requests that are in action also those that are in waiting
 
         System.out.println("Updated user details: ");
         for(User user: users) {
             user.displayRequestedResources(); //display list of requested resource
         }
 
-//        program.displayProgram();
-//
+        program.displayProgramFlow();
+
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
 

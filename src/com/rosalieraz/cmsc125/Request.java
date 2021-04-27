@@ -49,6 +49,7 @@ private final String name;
     int getResource() {
         return this.resource;
     }
+    String getStatus() { return this.status; }
     int getTimeRemaining() {
         return this.duration;
     }

@@ -38,12 +38,15 @@ public class User {
         System.out.println();
     }
     int getCurrResource() {
-        return this.userRequests.get(0).getResource();
+        if(!isRequestEmpty())
+            return this.userRequests.get(0).getResource();
+        return 0;
     }
     boolean isRequestEmpty() {
         return this.userRequests.isEmpty();
     }
     void removeDisplayedReq() {
-        this.userRequests.remove(0);
+        if(!this.userRequests.isEmpty())
+            this.userRequests.remove(0);
     }
 }
