@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
-        ArrayList<Integer> sampleArr = new ArrayList<>();
+//        ArrayList<Integer> sampleArr = new ArrayList<>();
 
 //        sampleArr.add(0);
 //        sampleArr.add(1);

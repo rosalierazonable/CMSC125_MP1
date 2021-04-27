@@ -9,6 +9,7 @@ private final int resource;
 private int duration;
 private String status;
 private final String name;
+int waitingTime;
 
     Request(String name, int user, int resource, int duration) {
         this.user = user;
@@ -16,11 +17,13 @@ private final String name;
         this.duration = duration;
         this.status = "default";
         this.name = name;
+        this.waitingTime = -1;
     }
 
     //Helper Functions
     void is_waiting() {
-        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available");
+        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available in " + this.waitingTime);
+        updateWaitingTime();
     }
     void in_action() {
         System.out.println(this.name + " will be using the resource " + this.resource + " for " + this.duration + " seconds");
@@ -36,10 +39,16 @@ private final String name;
         System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration + " seconds");
         this.duration--;
     }
+    void updateWaitingTime() {
+        this.waitingTime--;
+    }
 
     //Setter Functions
     void setStatus(String status) {
         this.status = status;
+    }
+    void setWaitingTime(int time) {
+        this.waitingTime = time;
     }
 
     //Getter Functions
