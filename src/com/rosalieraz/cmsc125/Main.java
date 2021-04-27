@@ -53,7 +53,7 @@ public class Main {
         }
         Program program = new Program(users);
         System.out.println("Max-size:" + program.getMaxSize());
-        program.displayStatus(); //displays whether a in_action or waiting for a resource
+//        program.displayStatus(); //displays whether a in_action or waiting for a resource
 //        program.displayInAction(); //display all requests that are in action also those that are in waiting
 
         System.out.println("Updated user details: ");

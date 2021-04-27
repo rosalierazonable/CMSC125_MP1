@@ -109,17 +109,17 @@ public class Program {
 //        }
 //        return status;
 //    }
-    ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
-        ArrayList<String> status = new ArrayList<>();
-        for (Integer req: currReqs) {
-            if(req!=0) {
-                 status.add("in_action");
-            } else {
-                status.add("waiting");
-            }
-        }
-        return status;
-    }
+//    ArrayList<String> getStatus(ArrayList<Integer> currReqs) {
+//        ArrayList<String> status = new ArrayList<>();
+//        for (Integer req: currReqs) {
+//            if(req!=0) {
+//                 status.add("in_action");
+//            } else {
+//                status.add("waiting");
+//            }
+//        }
+//        return status;
+//    }
 //    void displayStatus() {
 //        System.out.print("Request Status: ");
 //        ArrayList<String> stats = getStatus(getCurrentRequest());
@@ -129,15 +129,15 @@ public class Program {
 //        }
 //        System.out.println();
 //    }
-    void displayStatus() {
-        System.out.print("Request Status: ");
-        ArrayList<String> stats = getStatus(setRequestSequence());
-
-        for (String stat: stats) {
-            System.out.print(stat + " ");
-        }
-        System.out.println();
-    }
+//    void displayStatus() {
+//        System.out.print("Request Status: ");
+//        ArrayList<String> stats = getStatus(setRequestSequence());
+//
+//        for (String stat: stats) {
+//            System.out.print(stat + " ");
+//        }
+//        System.out.println();
+//    }
 //    void displayInAction() {
 //        ArrayList<String> status = getStatus(getCurrentRequest());
 //        for(int i = 0; i < status.size(); i++) {
@@ -162,20 +162,20 @@ public class Program {
 //            }
 //        }
 //    }
-    void displayProgram() {
-        ArrayList<String> status = getStatus(getCurrentRequest());
-        for(int i = 0; i < status.size(); i++) {
-            if(status.get(i).equals("in_action")) {
-                if(i == 0)
-                    users[i].userRequests.get(0).in_action();
-
-                if(users[i].userRequests.get(0).getTimeRemaining() != 0){
-                    users[i].userRequests.get(0).display_time();
-                } else
-                    users[i].userRequests.get(0).displayCompleteReq();
-            }
-        }
-    }
+//    void displayProgram() {
+//        ArrayList<String> status = getStatus(getCurrentRequest());
+//        for(int i = 0; i < status.size(); i++) {
+//            if(status.get(i).equals("in_action")) {
+//                if(i == 0)
+//                    users[i].userRequests.get(0).in_action();
+//
+//                if(users[i].userRequests.get(0).getTimeRemaining() != 0){
+//                    users[i].userRequests.get(0).display_time();
+//                } else
+//                    users[i].userRequests.get(0).displayCompleteReq();
+//            }
+//        }
+//    }
     void displayProgramFlow() {
         System.out.println("WaitList size: " + this.waitListed.size());
         System.out.println("Array size: " + requestSequence.size());
