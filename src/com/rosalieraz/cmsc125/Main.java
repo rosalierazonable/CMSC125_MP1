@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
-//        ArrayList<Integer> sampleArr = new ArrayList<>();
+        ArrayList<Integer> sampleArr = new ArrayList<>();
 
 //        sampleArr.add(0);
 //        sampleArr.add(1);
@@ -17,10 +17,12 @@ public class Main {
 //        sampleArr.add(3);
 //        sampleArr.add(4);
 //
-//        sampleArr.remove(0);
-//        System.out.println(sampleArr.get(0));
-//        sampleArr.remove(0);
-//        System.out.println(sampleArr.get(0));
+////        sampleArr.remove(0);
+////       System.out.println(sampleArr.get(0));
+////        sampleArr.remove(0);
+////        System.out.println(sampleArr.get(0));
+//
+//        System.out.println(sampleArr.get(sampleArr.size()));
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
@@ -65,6 +67,7 @@ public class Main {
 
         System.out.println("User count: " + user_count);
         System.out.println("Resource count: " + resource_count);
+        System.out.println();
 
 //        Frame frame = new Frame();
 //

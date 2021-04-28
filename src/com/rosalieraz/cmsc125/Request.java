@@ -22,11 +22,11 @@ int waitingTime;
 
     //Helper Functions
     void is_waiting() {
-        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available in " + this.waitingTime);
+        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available.");
         updateWaitingTime();
     }
     void in_action() {
-        System.out.println(this.name + " will be using the resource " + this.resource + " for " + this.duration + " seconds");
+        System.out.println(this.name + " will be using the resource " + this.resource + " for " + this.duration + " second/s.");
     }
     boolean is_completed() {
         return this.status.equals("complete");
@@ -36,7 +36,7 @@ int waitingTime;
             System.out.println("User " + this.user + "'s request on " + "resource " + this.resource + " has been completed.");
     }
     void display_time() {
-        System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration + " seconds");
+        System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration + " second/s.");
         this.duration--;
     }
     void updateWaitingTime() {
