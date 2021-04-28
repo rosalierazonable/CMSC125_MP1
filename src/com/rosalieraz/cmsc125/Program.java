@@ -34,7 +34,7 @@ public class Program {
                    } else {
                        user.userRequests.get(idx).setStatus("in waiting");
 //                       user.userRequests.get(idx).setWaitingTime(5);
-                       //                    this.waitListed.add(user.userRequests.get(idx));
+//                    this.waitListed.add(user.userRequests.get(idx));
                    }
                    this.requestSequence.add(user.userRequests.get(idx));
                }
@@ -78,7 +78,6 @@ public class Program {
         setRequestSequence();
         while(!this.requestSequence.isEmpty()) { //while all requests are not yet displayed
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
-//                System.out.println("i: " + i + " length: " + users.length);
 //                if(this.requestSequence.get(i) != null) {
                     switch (requestSequence.get(i).getStatus()) {
                         case "in action":

@@ -14,12 +14,12 @@ public class User {
 
     //Getter Functions
     int getId(){return this.id;}
-    int getRequestCount() {return this.userRequests.size();}
-    Request getCurrRequest() {
-        if(!this.userRequests.isEmpty())
-            return this.userRequests.get(0);
-        return null; //No more Request
-    }
+//    int getRequestCount() {return this.userRequests.size();}
+//    Request getCurrRequest() {
+//        if(!this.userRequests.isEmpty())
+//            return this.userRequests.get(0);
+//        return null; //No more Request
+//    }
 
     //Setter Functions
     void setUserRequests(ArrayList<Request> requests) {
@@ -37,11 +37,11 @@ public class User {
         }
         System.out.println();
     }
-    int getCurrResource() {
-        if(!isRequestEmpty())
-            return this.userRequests.get(0).getResource();
-        return 0;
-    }
+//    int getCurrResource() {
+//        if(!isRequestEmpty())
+//            return this.userRequests.get(0).getResource();
+//        return 0;
+//    }
     boolean isRequestEmpty() {
         return this.userRequests.isEmpty();
     }
