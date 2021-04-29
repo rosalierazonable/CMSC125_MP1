@@ -42,13 +42,9 @@ public class Program {
         }
         return maxSize;
     }
-//    boolean isRequestFree(Request req) {
-//        for (User user: this.users) {
-//           if(user.userRequests.contains(req))
-//               return true;
-//        }
-//        return false;
-//    }
+    boolean isRequestFree(Request req) {
+        return !this.requestSequence.contains(req) && !this.activeReqs.contains(req);
+    }
     void displayInAction() {
         boolean isWaiting = false;
         setRequestSequence();
@@ -64,11 +60,16 @@ public class Program {
         System.out.println();
     }
     void displayProgramFlow() {
+        Request temp = null;
         int idx;
-//        setRequestSequence();
         while(!this.requestSequence.isEmpty()) { //while all requests are not yet displayed
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
+
                 if(i < this.requestSequence.size()) {
+//                    if(this.isRequestFree(temp) && temp != null) {
+//                        System.out.println("Resource " + requestSequence.get(i).getResource() + " is now FREE! No Request from Users.");
+//                    }
+
                     switch (requestSequence.get(i).getStatus()) {
                         case "in action":
                             if (requestSequence.get(i).getTimeRemaining() > 0) { //if the request hasn't been exhausted
@@ -78,6 +79,10 @@ public class Program {
                             } else {
                                 this.requestSequence.get(i).setStatus("complete"); //set status to complete
                                 this.requestSequence.get(i).displayCompleteReq(); //report that the request has been completed
+
+                                System.out.println("----- Preparing next user request on resource " + this.requestSequence.get(i).getResource() + "-----");
+//                                temp = this.requestSequence.get(i);
+
                                 this.activeReqs.remove(this.requestSequence.get(i)); //remove from active list of request
                                 this.activeResources.remove(this.requestSequence.get(i).getResource()); //remove from active list of request
                                 this.requestSequence.remove(this.requestSequence.get(i)); //remove from the sequence
@@ -94,6 +99,7 @@ public class Program {
                             if(this.requestSequence.get(i).waitingTime > 0)
                                 this.requestSequence.get(i).is_waiting();
                             else {
+                                this.requestSequence.get(i).is_waiting();
                                 this.activeResources.add(this.requestSequence.get(i).getResource());
                                 this.activeReqs.add(this.requestSequence.get(i));
                                 this.requestSequence.get(i).setStatus("in action");
@@ -105,7 +111,7 @@ public class Program {
                     }
                 }
             }
-            System.out.println("-------------------------------------------");
+            System.out.println("__________________________________________________");
             System.out.println();
         }
     }
