@@ -1,6 +1,5 @@
 package com.rosalieraz.cmsc125;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Program {
@@ -51,9 +50,6 @@ public class Program {
         }
         this.toBeDisplayed = toBeDisplayed;
     }
-    boolean isRequestFree(Request req) {
-        return !this.requestSequence.contains(req) && !this.activeReqs.contains(req);
-    }
     void displayInAction() {
         boolean isWaiting = false;
         setRequestSequence();
@@ -69,7 +65,7 @@ public class Program {
         System.out.println();
     }
     void displayProgramFlow() {
-        Request temp = null;
+        Request temp;
         int idx;
         while(!this.requestSequence.isEmpty()) { //while all requests are not yet displayed
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
@@ -100,12 +96,10 @@ public class Program {
                             }
                             break;
                         case "in waiting":
-//                            if(this.requestSequence.get(i).waitingTime == -1) { //if the waiting Time is still set to default
-                                idx = this.activeResources.indexOf(this.requestSequence.get(i).getResource());
-                                if(idx > -1) {
-                                    this.requestSequence.get(i).setWaitingTime(activeReqs.get(idx).getTimeRemaining());
-                                }
-//                            }
+                            idx = this.activeResources.indexOf(this.requestSequence.get(i).getResource());
+                            if(idx > -1) {
+                                this.requestSequence.get(i).setWaitingTime(activeReqs.get(idx).getTimeRemaining());
+                            }
 
                             if(this.requestSequence.get(i).waitingTime > 0)
                                 this.requestSequence.get(i).is_waiting();

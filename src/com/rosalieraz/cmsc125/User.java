@@ -1,7 +1,6 @@
 package com.rosalieraz.cmsc125;
 
 import java.util.ArrayList;
-//import java.util.Queue;
 
 public class User {
 
@@ -30,8 +29,5 @@ public class User {
             System.out.print(req.getResource() + " ");
         }
         System.out.println();
-    }
-    boolean isRequestEmpty() {
-        return this.userRequests.isEmpty();
     }
 }
