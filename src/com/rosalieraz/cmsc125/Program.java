@@ -75,10 +75,6 @@ public class Program {
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
 
                 if(i < this.requestSequence.size()) {
-//                    if(this.isRequestFree(temp) && temp != null) {
-//                        System.out.println("Resource " + requestSequence.get(i).getResource() + " is now FREE! No Request from Users.");
-//                    }
-
                     switch (requestSequence.get(i).getStatus()) {
                         case "in action":
                             if (requestSequence.get(i).getTimeRemaining() > 0) { //if the request hasn't been exhausted
@@ -97,7 +93,7 @@ public class Program {
 
                                 this.getResourceToBeDisplayed(); //set list of requests that are yet to be displayed
                                 if(this.toBeDisplayed.contains(temp.getResource()) & this.requestSequence.size()!=1) { //check whether the resource that has just been completed still has existing request for it
-                                    System.out.println("----- Preparing next user request on resource " + temp.getResource() + "-----");
+                                    System.out.println("----- Preparing next user request on resource " + temp.getResource() + " -----");
                                 } else {
                                     System.out.println("Resource " + temp.getResource() + " is now FREE. No more existing user request for this resource.");
                                 }

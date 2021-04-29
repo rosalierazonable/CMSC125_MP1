@@ -20,7 +20,7 @@ int waitingTime;
 
     //Helper Functions
     void is_waiting() {
-        System.out.println(this.name + " will have to wait for resource " + this.resource + " to be available.");
+        System.out.println(this.name + " will have to WAIT for resource " + this.resource + " to be AVAILABLE.");
         updateWaitingTime();
     }
     void in_action() {
@@ -31,7 +31,7 @@ int waitingTime;
     }
     void displayCompleteReq() {
         if(is_completed())
-            System.out.println("User " + this.user + "'s request on " + "resource " + this.resource + " has been completed.");
+            System.out.println("User " + this.user + "'s request on " + "resource " + this.resource + " has been COMPLETED.");
     }
     void display_time() {
         System.out.println(this.name + " on resource " + this.resource + " | Time left: " + this.duration + " second/s.");
