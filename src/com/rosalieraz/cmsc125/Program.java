@@ -1,11 +1,13 @@
 package com.rosalieraz.cmsc125;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Program {
     User[] users;
     ArrayList<Request> activeReqs = new ArrayList<>();
     ArrayList<Integer> activeResources = new ArrayList<>();
+    ArrayList<Integer> toBeDisplayed = new ArrayList<>();
     ArrayList<Request> requestSequence = new ArrayList<>();
 
     //Constructor
@@ -41,6 +43,13 @@ public class Program {
                 maxSize = user.userRequests.size();
         }
         return maxSize;
+    }
+    void getResourceToBeDisplayed() {
+        ArrayList<Integer> toBeDisplayed = new ArrayList<>();
+        for(Request res: this.requestSequence){
+            toBeDisplayed.add(res.getResource());
+        }
+        this.toBeDisplayed = toBeDisplayed;
     }
     boolean isRequestFree(Request req) {
         return !this.requestSequence.contains(req) && !this.activeReqs.contains(req);
@@ -80,13 +89,18 @@ public class Program {
                                 this.requestSequence.get(i).setStatus("complete"); //set status to complete
                                 this.requestSequence.get(i).displayCompleteReq(); //report that the request has been completed
 
-                                if(this.requestSequence.size() != 1)
-                                    System.out.println("----- Preparing next user request on resource " + this.requestSequence.get(i).getResource() + "-----");
-//                                temp = this.requestSequence.get(i);
+                                temp = this.requestSequence.get(i); //keeps track of the current request
 
                                 this.activeResources.remove(this.requestSequence.get(i).getResource()); //remove from active list of request
                                 this.activeReqs.remove(this.requestSequence.get(i)); //remove from active list of request
                                 this.requestSequence.remove(this.requestSequence.get(i)); //remove from the sequence
+
+                                this.getResourceToBeDisplayed(); //set list of requests that are yet to be displayed
+                                if(this.toBeDisplayed.contains(temp.getResource()) & this.requestSequence.size()!=1) { //check whether the resource that has just been completed still has existing request for it
+                                    System.out.println("----- Preparing next user request on resource " + temp.getResource() + "-----");
+                                } else {
+                                    System.out.println("Resource " + temp.getResource() + " is now FREE. No more existing user request for this resource.");
+                                }
                             }
                             break;
                         case "in waiting":

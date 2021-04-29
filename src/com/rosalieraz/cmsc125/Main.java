@@ -10,10 +10,10 @@ public class Main {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
 
-        user_count = random(5); //generate random number of users that will need a resource
+        user_count = random(30); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
 
-        resource_count = random(5); //generate random number of resource that will be available for the users
+        resource_count = random(30); //generate random number of resource that will be available for the users
 
         System.out.println("Number of Users : " + user_count);
         System.out.println("Number of Available Resources : " + resource_count);
@@ -27,7 +27,7 @@ public class Main {
 
             for(int j = 0; j < req_count; j++) {
                 resource = random(resource_count); //randomize which resource to be requested
-                time_length = random(10); // randomize the duration
+                time_length = random(30); // randomize the duration
 
                 while(takenResource.contains(resource)) {
                     resource = random(resource_count);
