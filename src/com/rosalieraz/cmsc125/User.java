@@ -14,12 +14,6 @@ public class User {
 
     //Getter Functions
     int getId(){return this.id;}
-//    int getRequestCount() {return this.userRequests.size();}
-//    Request getCurrRequest() {
-//        if(!this.userRequests.isEmpty())
-//            return this.userRequests.get(0);
-//        return null; //No more Request
-//    }
 
     //Setter Functions
     void setUserRequests(ArrayList<Request> requests) {
