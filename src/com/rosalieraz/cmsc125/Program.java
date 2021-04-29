@@ -49,20 +49,23 @@ public class Program {
 //        }
 //        return false;
 //    }
-//    void displayInAction() {
-//        ArrayList<String> status = getStatus(getCurrentRequest());
-//        for(int i = 0; i < status.size(); i++) {
-//            if(status.get(i).equals("in_action")) {
-//                users[i].userRequests.get(0).in_action();
-//                users[i].removeDisplayedReq();
-//            } else {
-//                users[i].userRequests.get(0).is_waiting();
-//            }
-//        }
-//    }
+    void displayInAction() {
+        boolean isWaiting = false;
+        setRequestSequence();
+        for(Request req: this.requestSequence) {
+            if(req.getStatus().equals("in action")) {
+                req.in_action();
+            } else {
+                isWaiting = true;
+            }
+        }
+        if(isWaiting)
+            System.out.println("The rest of the requests will have to wait for other resources to be available.");
+        System.out.println();
+    }
     void displayProgramFlow() {
         int idx;
-        setRequestSequence();
+//        setRequestSequence();
         while(!this.requestSequence.isEmpty()) { //while all requests are not yet displayed
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
                 if(i < this.requestSequence.size()) {

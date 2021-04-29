@@ -60,6 +60,7 @@ public class Main {
         System.out.println();
         Program program = new Program(users);
 
+        program.displayInAction();
         program.displayProgramFlow();
 
 //        Frame frame = new Frame();
