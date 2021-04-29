@@ -13,14 +13,6 @@ public class Program {
         this.users = user;
     }
 
-    // Getter Functions
-//    ArrayList<User> getWaitListed() {
-//        return this.waitListed;
-//    }
-//    ArrayList<Request> getWaitListed() {
-//        return this.waitListed;
-//    }
-
     // Setter Functions
     void setRequestSequence(){
         ArrayList<Integer> currReqs = new ArrayList<>();
@@ -33,14 +25,9 @@ public class Program {
                        user.userRequests.get(idx).setStatus("in action");
                    } else {
                        user.userRequests.get(idx).setStatus("in waiting");
-//                       user.userRequests.get(idx).setWaitingTime(5);
-//                    this.waitListed.add(user.userRequests.get(idx));
                    }
                    this.requestSequence.add(user.userRequests.get(idx));
                }
-//               } else {
-//                   this.requestSequence.add(null);
-//               }
            }
            idx++;
        }
