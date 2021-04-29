@@ -52,9 +52,6 @@ int waitingTime;
     }
 
     //Getter Functions
-//    int getUser() {
-//        return this.user;
-//    }
     int getResource() {
         return this.resource;
     }
