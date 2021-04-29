@@ -37,16 +37,7 @@ public class User {
         }
         System.out.println();
     }
-//    int getCurrResource() {
-//        if(!isRequestEmpty())
-//            return this.userRequests.get(0).getResource();
-//        return 0;
-//    }
     boolean isRequestEmpty() {
         return this.userRequests.isEmpty();
-    }
-    void removeDisplayedReq() {
-        if(!this.userRequests.isEmpty())
-            this.userRequests.remove(0);
     }
 }
