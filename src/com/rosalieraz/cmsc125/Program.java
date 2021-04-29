@@ -78,13 +78,13 @@ public class Program {
         setRequestSequence();
         while(!this.requestSequence.isEmpty()) { //while all requests are not yet displayed
             for(int i=0; i<this.users.length; i++) { //must print based on the number of users
-//                if(this.requestSequence.get(i) != null) {
+                if(i < this.requestSequence.size()) {
                     switch (requestSequence.get(i).getStatus()) {
                         case "in action":
                             if (requestSequence.get(i).getTimeRemaining() > 0) { //if the request hasn't been exhausted
                                 this.activeReqs.add(this.requestSequence.get(i)); //add to active requests
                                 this.activeResources.add(this.requestSequence.get(i).getResource());
-                                requestSequence.get(i).display_time(); //display time left
+                                this.requestSequence.get(i).display_time(); //display time left
                             } else {
                                 this.requestSequence.get(i).setStatus("complete"); //set status to complete
                                 this.requestSequence.get(i).displayCompleteReq(); //report that the request has been completed
@@ -113,7 +113,7 @@ public class Program {
                             System.out.println("default");
                             break;
                     }
-//                }
+                }
             }
             System.out.println("-------------------------------------------");
             System.out.println();

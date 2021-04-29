@@ -53,6 +53,7 @@ public class Main {
             users[i].displayUserDetail(); // display how many resource requests were made by the user
             users[i].displayRequestedResources(); //display list of requested resource
         }
+        System.out.println();
         Program program = new Program(users);
 //        System.out.println("Max-size:" + program.getMaxSize());
 //        program.displayStatus(); //displays whether a in_action or waiting for a resource
