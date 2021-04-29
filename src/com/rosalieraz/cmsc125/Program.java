@@ -80,11 +80,12 @@ public class Program {
                                 this.requestSequence.get(i).setStatus("complete"); //set status to complete
                                 this.requestSequence.get(i).displayCompleteReq(); //report that the request has been completed
 
-                                System.out.println("----- Preparing next user request on resource " + this.requestSequence.get(i).getResource() + "-----");
+                                if(this.requestSequence.size() != 1)
+                                    System.out.println("----- Preparing next user request on resource " + this.requestSequence.get(i).getResource() + "-----");
 //                                temp = this.requestSequence.get(i);
 
-                                this.activeReqs.remove(this.requestSequence.get(i)); //remove from active list of request
                                 this.activeResources.remove(this.requestSequence.get(i).getResource()); //remove from active list of request
+                                this.activeReqs.remove(this.requestSequence.get(i)); //remove from active list of request
                                 this.requestSequence.remove(this.requestSequence.get(i)); //remove from the sequence
                             }
                             break;

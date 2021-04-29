@@ -9,28 +9,14 @@ public class Main {
     public static void main(String[] args) {
         int user_count, resource_count, time_length, resource, req_count;
         Queue<Integer> takenResource = new LinkedList<>();
-        ArrayList<Integer> sampleArr = new ArrayList<>();
-
-//        sampleArr.add(0);
-//        sampleArr.add(1);
-//        sampleArr.add(2);
-//        sampleArr.add(3);
-//        sampleArr.add(4);
-//
-////        sampleArr.remove(0);
-////       System.out.println(sampleArr.get(0));
-////        sampleArr.remove(0);
-////        System.out.println(sampleArr.get(0));
-//
-//        System.out.println(sampleArr.get(sampleArr.size()));
 
         user_count = random(5); //generate random number of users that will need a resource
         User[] users = new User[user_count]; //declare an array of User objects
 
         resource_count = random(5); //generate random number of resource that will be available for the users
 
-        System.out.println("User count: " + user_count);
-        System.out.println("Resource count: " + resource_count);
+        System.out.println("Number of Users : " + user_count);
+        System.out.println("Number of Available Resources : " + resource_count);
         System.out.println();
 
         for(int i = 0; i < user_count; i++) {
@@ -54,6 +40,10 @@ public class Main {
             takenResource.clear(); // resets the arraylist
 
             users[i].setUserRequests(reqs); //sets userRequest array of requests class member of user object
+            if(i == 0){
+                System.out.println("--- Initializing users and resources --- ");
+                System.out.println();
+            }
             users[i].displayUserDetail(); // display how many resource requests were made by the user
             users[i].displayRequestedResources(); //display list of requested resource
         }
@@ -61,6 +51,9 @@ public class Main {
         Program program = new Program(users);
 
         program.displayInAction();
+        System.out.println("P R O G R A M | S I M U L A T I O N  | O F |  T I M E S H A R I N G | O . S .");
+        System.out.println();
+
         program.displayProgramFlow();
 
 //        Frame frame = new Frame();
