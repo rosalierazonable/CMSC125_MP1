@@ -1,7 +1,5 @@
 package com.rosalieraz.cmsc125;
 
-import java.util.*;
-
 public class Request {
 
 private final int user;
