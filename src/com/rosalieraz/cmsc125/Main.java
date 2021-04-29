@@ -29,6 +29,10 @@ public class Main {
 
         resource_count = random(5); //generate random number of resource that will be available for the users
 
+        System.out.println("User count: " + user_count);
+        System.out.println("Resource count: " + resource_count);
+        System.out.println();
+
         for(int i = 0; i < user_count; i++) {
             users[i] = new User(i+1);
             req_count = random(resource_count);
@@ -55,20 +59,8 @@ public class Main {
         }
         System.out.println();
         Program program = new Program(users);
-//        System.out.println("Max-size:" + program.getMaxSize());
-//        program.displayStatus(); //displays whether a in_action or waiting for a resource
-//        program.displayInAction(); //display all requests that are in action also those that are in waiting
-
-//        System.out.println("Updated user details: ");
-//        for(User user: users) {
-//            user.displayRequestedResources(); //display list of requested resource
-//        }
 
         program.displayProgramFlow();
-
-        System.out.println("User count: " + user_count);
-        System.out.println("Resource count: " + resource_count);
-        System.out.println();
 
 //        Frame frame = new Frame();
 //
@@ -86,17 +78,6 @@ public class Main {
         Random random = new Random();
         return random.nextInt(bound)+1;
     }
-
-//    public static void displayRequests(Queue<Request[]> reqs) {
-//        for (Request[] reqArr: reqs) {
-//            for (Request req: reqArr) {
-//                req.display_time();
-//                if(req.is_completed()) {
-//                    req.reportRequest();
-//                }
-//            }
-//        }
-//    }
 }
 
 
