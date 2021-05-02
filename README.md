@@ -11,3 +11,6 @@ Machine Problem 1 in Computer Science 125: Operating Systems
 - Finally, the program should be able to say when the resources will be free of users (meaning, no user needs to use the resource).
 - A user can only request for a specific resource once. User cannot request for a resource multiple times.
 - User request is to be sorted according to priority (by order number, in increasing order)
+
+#Run Code Here: 
+https://replit.com/@rsraz/Multiprogramming
